@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import sys, string
+import sys
 r = 0
 for b in sys.stdin.read().split("\n\n"):
   s = set()
