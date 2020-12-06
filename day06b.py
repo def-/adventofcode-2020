@@ -1,18 +1,9 @@
 #!/usr/bin/env python
-import sys, collections
+import sys, string
 r = 0
-s = collections.Counter()
-n = 0
-for l in sys.stdin:
-  l = l.rstrip("\n")
-  if l:
-    for c in l:
-      s[c] += 1
-    n += 1
-  else:
-    for c in s:
-      if s[c] == n:
-        r += 1
-    s = collections.Counter()
-    n = 0
+for b in sys.stdin.read().split("\n\n"):
+  s = set(string.ascii_lowercase)
+  for l in b.split("\n"):
+    s &= set(l.rstrip("\n"))
+  r += len(s)
 print(r)

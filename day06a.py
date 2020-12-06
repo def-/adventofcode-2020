@@ -1,13 +1,9 @@
 #!/usr/bin/env python
-import sys
+import sys, string
 r = 0
-s = set()
-for l in sys.stdin:
-  l = l.rstrip("\n")
-  if l:
-    for c in l:
-      s.add(c)
-  else:
-    r += len(s)
-    s = set()
+for b in sys.stdin.read().split("\n\n"):
+  s = set()
+  for l in b.split("\n"):
+    s |= set(l.rstrip("\n"))
+  r += len(s)
 print(r)
